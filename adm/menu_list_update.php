@@ -25,6 +25,9 @@ for ($i=0; $i<$count; $i++)
 
     $code    = is_array($_POST['code']) ? strip_tags($_POST['code'][$i]) : '';
     $me_name = is_array($_POST['me_name']) ? strip_tags($_POST['me_name'][$i]) : '';
+    $me_name_en = is_array($_POST['me_name_en']) ? strip_tags($_POST['me_name_en'][$i]) : '';
+    $me_name_cn = is_array($_POST['me_name_cn']) ? strip_tags($_POST['me_name_cn'][$i]) : '';
+    $me_name_jp = is_array($_POST['me_name_jp']) ? strip_tags($_POST['me_name_jp'][$i]) : '';
     $me_link = (preg_match('/^javascript/i', $_POST['me_link'][$i]) || preg_match('/script:/i', $_POST['me_link'][$i])) ? G5_URL : strip_tags($_POST['me_link'][$i]);
     
     if(!$code || !$me_name || !$me_link)
@@ -60,6 +63,9 @@ for ($i=0; $i<$count; $i++)
     $sql = " insert into {$g5['menu_table']}
                 set me_code         = '".$me_code."',
                     me_name         = '".$me_name."',
+                    me_name_en      = '".$me_name_en."',
+                    me_name_cn      = '".$me_name_cn."',
+                    me_name_jp      = '".$me_name_jp."',
                     me_link         = '".$me_link."',
                     me_target       = '".sql_real_escape_string(strip_tags($_POST['me_target'][$i]))."',
                     me_order        = '".sql_real_escape_string(strip_tags($_POST['me_order'][$i]))."',

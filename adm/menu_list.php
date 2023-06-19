@@ -48,6 +48,9 @@ $colspan = 7;
     <thead>
     <tr>
         <th scope="col" width="250">메뉴</th>
+        <th scope="col">영문 메뉴</th>
+        <th scope="col">중문 메뉴</th>
+        <th scope="col">일문 메뉴</th>
         <th scope="col">링크</th>
         <th scope="col">새창</th>
         <th scope="col">순서</th>
@@ -71,12 +74,24 @@ $colspan = 7;
         $search  = array('"', "'");
         $replace = array('&#034;', '&#039;');
         $me_name = str_replace($search, $replace, $row['me_name']);
+        $me_name_en = str_replace($search, $replace, $row['me_name_en']);
+        $me_name_cn = str_replace($search, $replace, $row['me_name_cn']);
+        $me_name_jp = str_replace($search, $replace, $row['me_name_jp']);
     ?>
     <tr class="<?php echo $bg; ?> menu_list menu_group_<?php echo substr($row['me_code'], 0, 2); ?>">
         <td class="td_category<?php echo $sub_menu_class; ?>">
             <input type="hidden" name="code[]" value="<?php echo substr($row['me_code'], 0, 2) ?>">
             <label for="me_name_<?php echo $i; ?>" class="sound_only"><?php echo $sub_menu_info; ?> 메뉴<strong class="sound_only"> 필수</strong></label>
             <input type="text" name="me_name[]" value="<?php echo get_sanitize_input($me_name); ?>" id="me_name_<?php echo $i; ?>" required class="required tbl_input full_input">
+        </td>
+        <td>
+            <input type="text" name="me_name_en[]" value="<?php echo get_sanitize_input($me_name_en); ?>" id="me_name_en_<?php echo $i; ?>" class="tbl_input full_input">
+        </td>
+        <td>
+            <input type="text" name="me_name_cn[]" value="<?php echo get_sanitize_input($me_name_cn); ?>" id="me_name_cn_<?php echo $i; ?>" class="tbl_input full_input">
+        </td>
+        <td>
+            <input type="text" name="me_name_jp[]" value="<?php echo get_sanitize_input($me_name_jp); ?>" id="me_name_jp_<?php echo $i; ?>" class="tbl_input full_input">
         </td>
         <td>
             <label for="me_link_<?php echo $i; ?>" class="sound_only">링크<strong class="sound_only"> 필수</strong></label>
