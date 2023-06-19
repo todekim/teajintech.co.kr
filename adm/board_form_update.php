@@ -76,11 +76,23 @@ $bo_category_list = str_replace($src_char, $dst_char, $bo_category_list);
 $str_bo_category_list = isset($_POST['bo_category_list']) ? preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\/\^\*]/", "", $_POST['bo_category_list']) : '';
 
 $_POST['bo_subject'] = strip_tags($_POST['bo_subject']);
+$_POST['bo_subject_en'] = strip_tags($_POST['bo_subject_en']);
+$_POST['bo_subject_cn'] = strip_tags($_POST['bo_subject_cn']);
+$_POST['bo_subject_jp'] = strip_tags($_POST['bo_subject_jp']);
 $_POST['bo_mobile_subject'] = strip_tags($_POST['bo_mobile_subject']);
+$_POST['bo_mobile_subject_en'] = strip_tags($_POST['bo_mobile_subject_en']);
+$_POST['bo_mobile_subject_cn'] = strip_tags($_POST['bo_mobile_subject_cn']);
+$_POST['bo_mobile_subject_jp'] = strip_tags($_POST['bo_mobile_subject_jp']);
 
 $sql_common = " gr_id               = '{$gr_id}',
                 bo_subject          = '{$_POST['bo_subject']}',
+                bo_subject_en       = '{$_POST['bo_subject_en']}',
+                bo_subject_cn       = '{$_POST['bo_subject_cn']}',
+                bo_subject_jp       = '{$_POST['bo_subject_jp']}',
                 bo_mobile_subject   = '{$_POST['bo_mobile_subject']}',
+                bo_mobile_subject_en= '{$_POST['bo_mobile_subject_en']}',
+                bo_mobile_subject_cn= '{$_POST['bo_mobile_subject_cn']}',
+                bo_mobile_subject_jp= '{$_POST['bo_mobile_subject_jp']}',
                 bo_device           = '{$_POST['bo_device']}',
                 bo_admin            = '{$bo_admin}',
                 bo_list_level       = '{$_POST['bo_list_level']}',

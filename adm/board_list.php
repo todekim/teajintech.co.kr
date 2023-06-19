@@ -97,6 +97,9 @@ $colspan = 15;
         <th scope="col"><?php echo subject_sort_link('bo_skin', '', 'desc') ?>스킨</a></th>
         <th scope="col"><?php echo subject_sort_link('bo_mobile_skin', '', 'desc') ?>모바일<br>스킨</a></th>
         <th scope="col"><?php echo subject_sort_link('bo_subject') ?>제목</a></th>
+        <th scope="col"><?php echo subject_sort_link('bo_subject_en') ?>영문 제목</a></th>
+        <th scope="col"><?php echo subject_sort_link('bo_subject_cn') ?>중문 제목</a></th>
+        <th scope="col"><?php echo subject_sort_link('bo_subject_jp') ?>일문 제목</a></th>
         <th scope="col">읽기P<span class="sound_only">포인트</span></th>
         <th scope="col">쓰기P<span class="sound_only">포인트</span></th>
         <th scope="col">댓글P<span class="sound_only">포인트</span></th>
@@ -128,7 +131,7 @@ $colspan = 15;
             <?php }else{ ?>
                 <input type="hidden" name="gr_id[<?php echo $i ?>]" value="<?php echo $row['gr_id'] ?>"><?php echo $row['gr_subject'] ?>
             <?php } ?>
-        </td>
+        </td>        
         <td>
             <input type="hidden" name="board_table[<?php echo $i ?>]" value="<?php echo $row['bo_table'] ?>">
             <a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=<?php echo $row['bo_table'] ?>"><?php echo $row['bo_table'] ?></a>
@@ -144,6 +147,15 @@ $colspan = 15;
         <td>
             <label for="bo_subject_<?php echo $i; ?>" class="sound_only">게시판 제목<strong class="sound_only"> 필수</strong></label>
             <input type="text" name="bo_subject[<?php echo $i ?>]" value="<?php echo get_text($row['bo_subject']) ?>" id="bo_subject_<?php echo $i ?>" required class="required tbl_input bo_subject full_input" size="10">
+        </td>
+        <td>
+            <input type="text" name="bo_subject_en[<?php echo $i ?>]" value="<?php echo get_text($row['bo_subject_en']) ?>" id="bo_subject_en_<?php echo $i ?>" class="tbl_input bo_subject full_input" size="10">
+        </td>
+        <td>
+            <input type="text" name="bo_subject_cn[<?php echo $i ?>]" value="<?php echo get_text($row['bo_subject_cn']) ?>" id="bo_subject_cn_<?php echo $i ?>" class="tbl_input bo_subject full_input" size="10">
+        </td>
+        <td>
+            <input type="text" name="bo_subject_jp[<?php echo $i ?>]" value="<?php echo get_text($row['bo_subject_jp']) ?>" id="bo_subject_jp_<?php echo $i ?>" class="tbl_input bo_subject full_input" size="10">
         </td>
         <td class="td_numsmall">
             <label for="bo_read_point_<?php echo $i; ?>" class="sound_only">읽기 포인트</label>

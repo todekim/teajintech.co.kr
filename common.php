@@ -639,5 +639,19 @@ header('Cache-Control: no-store, no-cache, must-revalidate'); // HTTP/1.1
 header('Cache-Control: pre-check=0, post-check=0, max-age=0'); // HTTP/1.1
 header('Pragma: no-cache'); // HTTP/1.0
 
+//언어설정 추가 20230619
+if($lang_type){
+	set_cookie("lang_type",$lang_type,3600*24);
+}else{
+	$lang_type=(get_cookie("lang_type"))?get_cookie("lang_type"):"ko";
+}
+
+if(strpos($PHP_SELF,"/adm/") > -1) $lang_type="ko";
+
+//언어설정 파일 로드
+//$lang_file=G5_PATH."/lang/".$lang_type.".lang.php";
+$lang_file=G5_PATH."/lang/".$lang_type.".lang.php";
+if(file_exists($lang_file)) include $lang_file;
+
 $html_process = new html_process();
 ?>

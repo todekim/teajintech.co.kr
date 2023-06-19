@@ -30,10 +30,16 @@ if ($_POST['act_button'] == "선택수정") {
         }
 
         $p_bo_subject = is_array($_POST['bo_subject']) ? strip_tags($_POST['bo_subject'][$k]) : '';
+        $p_bo_subject_en = is_array($_POST['bo_subject_en']) ? strip_tags($_POST['bo_subject_en'][$k]) : '';
+        $p_bo_subject_cn = is_array($_POST['bo_subject_cn']) ? strip_tags($_POST['bo_subject_cn'][$k]) : '';
+        $p_bo_subject_jp = is_array($_POST['bo_subject_jp']) ? strip_tags($_POST['bo_subject_jp'][$k]) : '';
 
         $sql = " update {$g5['board_table']}
                     set gr_id               = '".sql_real_escape_string(strip_tags($_POST['gr_id'][$k]))."',
                         bo_subject          = '".$p_bo_subject."',
+                        bo_subject_en       = '".$p_bo_subject_en."',
+                        bo_subject_cn       = '".$p_bo_subject_cn."',
+                        bo_subject_jp       = '".$p_bo_subject_jp."',
                         bo_device           = '".sql_real_escape_string(strip_tags($_POST['bo_device'][$k]))."',
                         bo_skin             = '".sql_real_escape_string(strip_tags($_POST['bo_skin'][$k]))."',
                         bo_mobile_skin      = '".sql_real_escape_string(strip_tags($_POST['bo_mobile_skin'][$k]))."',

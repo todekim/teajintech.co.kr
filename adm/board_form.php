@@ -204,10 +204,46 @@ $pg_anchor = '<ul class="anchor">
             </td>
         </tr>
         <tr>
+            <th scope="row"><label for="bo_subject_en">영문 게시판 제목</label></th>
+            <td colspan="2">
+                <input type="text" name="bo_subject_en" value="<?php echo get_text($board['bo_subject_en']) ?>" id="bo_subject_en" class="frm_input" size="80" maxlength="120">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="bo_subject_cn">중문 게시판 제목</label></th>
+            <td colspan="2">
+                <input type="text" name="bo_subject_cn" value="<?php echo get_text($board['bo_subject_cn']) ?>" id="bo_subject_cn" class="frm_input" size="80" maxlength="120">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="bo_subject_jp">일문 게시판 제목</label></th>
+            <td colspan="2">
+                <input type="text" name="bo_subject_jp" value="<?php echo get_text($board['bo_subject_jp']) ?>" id="bo_subject_jp" class="frm_input" size="80" maxlength="120">
+            </td>
+        </tr>
+        <tr>
             <th scope="row"><label for="bo_mobile_subject">모바일 게시판 제목</label></th>
             <td colspan="2">
                 <?php echo help("모바일에서 보여지는 게시판 제목이 다른 경우에 입력합니다. 입력이 없으면 기본 게시판 제목이 출력됩니다.") ?>
                 <input type="text" name="bo_mobile_subject" value="<?php echo get_text($board['bo_mobile_subject']) ?>" id="bo_mobile_subject" class="frm_input" size="80" maxlength="120">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="bo_mobile_subject_en">모바일 영문 게시판 제목</label></th>
+            <td colspan="2">
+                <input type="text" name="bo_mobile_subject_en" value="<?php echo get_text($board['bo_mobile_subject_en']) ?>" id="bo_mobile_subject_en" class="frm_input" size="80" maxlength="120">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="bo_mobile_subject_cn">모바일 중문 게시판 제목</label></th>
+            <td colspan="2">
+                <input type="text" name="bo_mobile_subject_cn" value="<?php echo get_text($board['bo_mobile_subject_cn']) ?>" id="bo_mobile_subject_cn" class="frm_input" size="80" maxlength="120">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="bo_mobile_subject_jp">모바일 일문 게시판 제목</label></th>
+            <td colspan="2">
+                <input type="text" name="bo_mobile_subject_jp" value="<?php echo get_text($board['bo_mobile_subject_jp']) ?>" id="bo_mobile_subject_jp" class="frm_input" size="80" maxlength="120">
             </td>
         </tr>
         <tr>
