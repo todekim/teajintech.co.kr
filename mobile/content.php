@@ -7,10 +7,13 @@ $co = sql_fetch($sql);
 if (!$co['co_id'])
     alert('등록된 내용이 없습니다.');
 
-$g5['title'] = $co['co_subject'];
+$g5['title'] = $co['co_subject'.($lang_type=="ko"?"":"_".$lang_type)];
 include_once('./_head.php');
 
-$co_content = $co['co_mobile_content'] ? $co['co_mobile_content'] : $co['co_content'];
+if($lang_type=="ko") $co_content = $co['co_mobile_content'];
+else $co_content = $co['co_content'.($lang_type=="ko"?"":"_".$lang_type)];
+
+//$co_content = $co['co_mobile_content'] ? $co['co_mobile_content'] : $co['co_content'];
 $str = conv_content($co_content, $co['co_html'], $co['co_tag_filter_use']);
 
 // $src 를 $dst 로 변환

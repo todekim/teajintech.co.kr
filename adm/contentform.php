@@ -86,13 +86,39 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
         <td><input type="text" name="co_subject" value="<?php echo htmlspecialchars2($co['co_subject']); ?>" id="co_subject" required class="frm_input required" size="90"></td>
     </tr>
     <tr>
+        <th scope="row"><label for="co_subject_en">영문 제목</label></th>
+        <td><input type="text" name="co_subject_en" value="<?php echo htmlspecialchars2($co['co_subject_en']); ?>" id="co_subject_en" class="frm_input" size="90"></td>
+    </tr>
+    <tr>
+        <th scope="row"><label for="co_subject_cn">중문 제목</label></th>
+        <td><input type="text" name="co_subject_cn" value="<?php echo htmlspecialchars2($co['co_subject_cn']); ?>" id="co_subject_cn" class="frm_input" size="90"></td>
+    </tr>
+    <tr>
+        <th scope="row"><label for="co_subject_jp">일문 제목</label></th>
+        <td><input type="text" name="co_subject_jp" value="<?php echo htmlspecialchars2($co['co_subject_jp']); ?>" id="co_subject_jp" class="frm_input" size="90"></td>
+    </tr>
+    <tr>
         <th scope="row">내용</th>
-        <td><?php echo editor_html('co_content', get_text(html_purifier($co['co_content']), 0)); ?></td>
+        <td><?php echo editor_html('co_content', get_text($co['co_content'], 0)); ?></td>
     </tr>
     <tr>
         <th scope="row">모바일 내용</th>
-        <td><?php echo editor_html('co_mobile_content', get_text(html_purifier($co['co_mobile_content']), 0)); ?></td>
+        <td><?php echo editor_html('co_mobile_content', get_text($co['co_mobile_content'], 0)); ?></td>
     </tr>
+    <tr>
+        <th scope="row">영문 내용</th>
+        <td><?php echo editor_html('co_content_en', get_text($co['co_content_en'], 0)); ?></td>
+    </tr>
+    <tr>
+        <th scope="row">중문 내용</th>
+        <td><?php echo editor_html('co_content_cn', get_text($co['co_content_cn'], 0)); ?></td>
+    </tr>
+    </tr>
+    <tr>
+        <th scope="row">일문 내용</th>
+        <td><?php echo editor_html('co_content_jp', get_text($co['co_content_jp'], 0)); ?></td>
+    </tr>
+    
     <tr>
         <th scope="row"><label for="co_skin">스킨 디렉토리<strong class="sound_only">필수</strong></label></th>
         <td>
@@ -262,6 +288,9 @@ function frmcontentform_check(f)
     errfld = "";
 
     <?php echo get_editor_js('co_content'); ?>
+    <?php echo get_editor_js('co_content_en'); ?>
+    <?php echo get_editor_js('co_content_cn'); ?>
+    <?php echo get_editor_js('co_content_jp'); ?>
     <?php echo chk_editor_js('co_content'); ?>
     <?php echo get_editor_js('co_mobile_content'); ?>
 

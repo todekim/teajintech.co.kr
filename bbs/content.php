@@ -19,7 +19,7 @@ $co = sql_fetch($sql);
 if (!$co['co_id'])
     alert('등록된 내용이 없습니다.');
 
-$g5['title'] = $co['co_subject'];
+$g5['title'] = $co['co_subject'.($lang_type=="ko"?"":"_".$lang_type)];
 
 if ($co['co_include_head'] && is_include_path_check($co['co_include_head']))
     @include_once($co['co_include_head']);
@@ -28,7 +28,7 @@ else
 
 // KVE-2019-0828 취약점 내용
 $co['co_tag_filter_use'] = 1;
-$str = conv_content($co['co_content'], $co['co_html'], $co['co_tag_filter_use']);
+$str = conv_content($co['co_content'.($lang_type=="ko"?"":"_".$lang_type)], $co['co_html'], $co['co_tag_filter_use']);
 
 // $src 를 $dst 로 변환
 unset($src);
@@ -69,11 +69,9 @@ if(trim($co['co_skin']) == '')
 $content_skin_path = get_skin_path('content', $co['co_skin']);
 $content_skin_url  = get_skin_url('content', $co['co_skin']);
 $skin_file = $content_skin_path.'/content.skin.php';
-
 if ($is_admin)
     echo '<div class="ctt_admin"><a href="'.G5_ADMIN_URL.'/contentform.php?w=u&amp;co_id='.$co_id.'" class="btn_admin btn">내용 수정</a></div>';
 ?>
-
 <?php
 if(is_file($skin_file)) {
     $himg = G5_DATA_PATH.'/content/'.$co_id.'_h';

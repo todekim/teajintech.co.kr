@@ -22,6 +22,9 @@ if ($w == "" || $w == "u")
 
 $co_id = preg_replace('/[^a-z0-9_]/i', '', $co_id);
 $co_subject = strip_tags($co_subject);
+$co_subject_en = strip_tags($co_subject_en);
+$co_subject_cn = strip_tags($co_subject_cn);
+$co_subject_jp = strip_tags($co_subject_jp);
 $co_include_head = preg_replace(array("#[\\\]+$#", "#(<\?php|<\?)#i"), "", substr($co_include_head, 0, 255));
 $co_include_tail = preg_replace(array("#[\\\]+$#", "#(<\?php|<\?)#i"), "", substr($co_include_tail, 0, 255));
 $co_tag_filter_use = isset($_POST['co_tag_filter_use']) ? (int) $_POST['co_tag_filter_use'] : 1;
@@ -76,7 +79,13 @@ $sql_common = " co_include_head     = '$co_include_head',
                 co_html             = '$co_html',
                 co_tag_filter_use   = '$co_tag_filter_use',
                 co_subject          = '$co_subject',
+                co_subject_en       = '$co_subject_en',
+                co_subject_cn       = '$co_subject_cn',
+                co_subject_jp       = '$co_subject_jp',
                 co_content          = '$co_content',
+                co_content_en       = '$co_content_en',
+                co_content_cn       = '$co_content_cn',
+                co_content_jp       = '$co_content_jp',
                 co_mobile_content   = '$co_mobile_content',
                 co_skin             = '$co_skin',
                 co_mobile_skin      = '$co_mobile_skin' ";

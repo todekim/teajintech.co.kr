@@ -1,5 +1,10 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
+$co_info = "태진테크 | 서울특별시 금천구 벚꽃로 278(가산동, SJ테크노빌) 607,611,B101호";
+switch($lang_type){
+    case "ko": $co_info = "태진테크 | 서울특별시 금천구 벚꽃로 278(가산동, SJ테크노빌) 607,611,B101호"; break;
+    default : $co_info = "Taejintech | (607,611,B101), 278, Beotkkot-ro, Geumcheon-gu, Seoul, Republic of Korea"; break;
+}
 ?>
 </div>
 </div>
@@ -15,7 +20,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 </div>
 <div id="ft">
     <div class="ft_wr">
-        <div id="ft_company">태진테크 | 서울특별시 금천구 벚꽃로 278(가산동, SJ테크노빌) 607,611,B101호</div>
+        <div id="ft_company"><?=$co_info;?></div>
         <div id="ft_copy">Copyright &copy; <b>taejintech.co.kr.</b> All rights reserved.</div>
     </div>
     <button type="button" id="top_btn"><i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span></button>

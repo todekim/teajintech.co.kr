@@ -7,7 +7,10 @@ include_once(G5_LIB_PATH . '/poll.lib.php');
 include_once(G5_LIB_PATH . '/visit.lib.php');
 include_once(G5_LIB_PATH . '/connect.lib.php');
 include_once(G5_LIB_PATH . '/popular.lib.php');
-foreach ($_GET as $first_key => $first_value) $GET_VARS .= "&".$first_key."=".$first_value;
+foreach ($_GET as $first_key => $first_value) {
+    if($first_key=="lang_type") continue;
+    $GET_VARS .= "&".$first_key."=".$first_value;
+}
 ?>
 <header id="hd" class="top">
     <h1 id="hd_h1"><?php echo $g5['title'] ?></h1>

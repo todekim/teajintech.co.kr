@@ -550,7 +550,7 @@ function check_html_link_nofollow($type=''){
 // Clean : HTML Purifier ensures standards-compliant output
 // Open  : HTML Purifier is open-source and highly customizable
 function html_purifier($html)
-{
+{   
     $f = file(G5_PLUGIN_PATH.'/htmlpurifier/safeiframe.txt');
     $domains = array();
     foreach($f as $domain){
