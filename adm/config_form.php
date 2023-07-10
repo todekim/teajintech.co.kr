@@ -301,8 +301,20 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
         </colgroup>
         <tbody>
         <tr>
-            <th scope="row"><label for="cf_title">홈페이지 제목<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="cf_title">홈페이지 국문 제목<strong class="sound_only">필수</strong></label></th>
             <td colspan="3"><input type="text" name="cf_title" value="<?php echo $config['cf_title'] ?>" id="cf_title" required class="required frm_input" size="40"></td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="cf_title_en">홈페이지 영문 제목</label></th>
+            <td colspan="3"><input type="text" name="cf_title_en" value="<?php echo $config['cf_title_en'] ?>" id="cf_title_en" required class="frm_input" size="40"></td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="cf_title_cn">홈페이지 중문 제목</label></th>
+            <td colspan="3"><input type="text" name="cf_title_cn" value="<?php echo $config['cf_title_cn'] ?>" id="cf_title_cn" required class="frm_input" size="40"></td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="cf_title_jp">홈페이지 일문 제목</label></th>
+            <td colspan="3"><input type="text" name="cf_title_jp" value="<?php echo $config['cf_title_jp'] ?>" id="cf_title_jp" required class="frm_input" size="40"></td>
         </tr>
         <tr>
             <th scope="row"><label for="cf_admin">최고관리자<strong class="sound_only">필수</strong></label></th>

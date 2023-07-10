@@ -21,7 +21,7 @@ foreach ($_GET as $first_key => $first_value) {
     } ?>
     <div id="hd_wrapper">
         <div id="logo">
-            <a href="<?php echo G5_URL ?>"><img src="<?php echo G5_IMG_URL ?>/m_logo.png" alt="<?php echo $config['cf_title']; ?>"></a>
+            <a href="<?php echo G5_URL ?>"><img src="<?php echo G5_IMG_URL ?>/m_logo<?=($lang_type!="ko")?"_en":"";?>.png" alt="<?php echo $config['cf_title']; ?>"></a>
         </div>
         <div id="hd_btn">
             <button type="button" class="hd_language_btn"><?=strtoupper($lang_type);?></button>

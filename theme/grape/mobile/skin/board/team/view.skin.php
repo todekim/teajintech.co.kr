@@ -5,7 +5,6 @@ include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0);
 ?>
-
 <script src="<?php echo G5_JS_URL; ?>/viewimageresize.js"></script>
 <?php // 게시판 관리의 상단 내용
 if (G5_IS_MOBILE) {
@@ -16,7 +15,6 @@ if (G5_IS_MOBILE) {
 
 } 
 ?>
-
 <style type="text/css">
 .subimg {padding: 15px;float: left;text-align: center;overflow: hidden;zoom: 1;padding-bottom: 0;}
 .subimg img {margin-bottom: 10px !important;}
@@ -67,13 +65,6 @@ div.link_yt a.demo:hover{
 }
 
 </style>
-
-
-<!-- <div id="nav">
-    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']); ?></span></div>
-</div> -->
-
-
 <article id="bo_v">
     <header>
         <h2 class="sound_only">
@@ -82,7 +73,7 @@ div.link_yt a.demo:hover{
             <?php } ?>            
             <span class="bo_v_tit">
                 <?php
-            echo cut_str(get_text($view['wr_subject']), 70); // 글제목 출력
+            echo cut_str(get_text($view['wr_subject'.($lang_type=="ko"?"":"_".$lang_type)]), 70); // 글제목 출력
         ?></span>
     </h2>
 </header>
@@ -124,10 +115,10 @@ div.link_yt a.demo:hover{
 
     <div id="bo_v_con">
         <div class="team_name">
-            <?php if ($view[wr_1]) { ?> 
+            <?php if ($view['wr_1']) { ?> 
                 <span class="badge badge-danger">단종제품</span> 
             <?php } ?>
-            <?php echo cut_str(get_text($view['wr_subject']), 70); /*글제목 출력*/ ?> 
+            <?php echo cut_str(get_text($view['wr_subject'.($lang_type=="ko"?"":"_".$lang_type)]), 70); /*글제목 출력*/ ?> 
         </div>
         <?php echo get_view_thumbnail($view['content']); ?>
         

@@ -46,7 +46,7 @@ if (!$board['bo_use_list_view']) {
 // 이전글 링크
 $prev_href = '';
 if (isset($prev['wr_id']) && $prev['wr_id']) {
-    $prev_wr_subject = get_text(cut_str($prev['wr_subject'], 255));
+    $prev_wr_subject = get_text(cut_str($prev['wr_subject'.($lang_type=="ko"?"":"_".$lang_type)], 255));
     $prev_href = './board.php?bo_table='.$bo_table.'&amp;wr_id='.$prev['wr_id'].$qstr;
     $prev_wr_date = $prev['wr_datetime'];
 }
@@ -54,7 +54,7 @@ if (isset($prev['wr_id']) && $prev['wr_id']) {
 // 다음글 링크
 $next_href = '';
 if (isset($next['wr_id']) && $next['wr_id']) {
-    $next_wr_subject = get_text(cut_str($next['wr_subject'], 255));
+    $next_wr_subject = get_text(cut_str($next['wr_subject'.($lang_type=="ko"?"":"_".$lang_type)], 255));
     $next_href = './board.php?bo_table='.$bo_table.'&amp;wr_id='.$next['wr_id'].$qstr;
     $next_wr_date = $next['wr_datetime'];
 }
@@ -116,7 +116,7 @@ if (strstr($view['wr_option'], 'html1'))
 else if (strstr($view['wr_option'], 'html2'))
     $html = 2;
 
-$view['content'] = conv_content($view['wr_content'], $html);
+$view['content'] = conv_content($view['wr_content'.($lang_type=="ko"?"":"_".$lang_type)], $html);
 if (strstr($sfl, 'content'))
     $view['content'] = search_font($stx, $view['content']);
 

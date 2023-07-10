@@ -16,7 +16,7 @@ if (!$bo_table) {
     alert($msg);
 }
 
-$g5['board_title'] = ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']);
+$g5['board_title'] = ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]);
 
 // wr_id 값이 있으면 글읽기
 if (isset($wr_id) && $wr_id) {
@@ -138,7 +138,7 @@ if (isset($wr_id) && $wr_id) {
         set_session($ss_name, TRUE);
     }
 
-    $g5['title'] = strip_tags(conv_subject($write['wr_subject'], 255))." > ".$g5['board_title'];
+    $g5['title'] = strip_tags(conv_subject($write['wr_subject'.($lang_type=="ko"?"":"_".$lang_type)], 255))." > ".$g5['board_title'.($lang_type=="ko"?"":"_".$lang_type)];
 } else {
     if ($member['mb_level'] < $board['bo_list_level']) {
         if ($member['mb_id'])
@@ -173,7 +173,7 @@ if (isset($wr_id) && $wr_id) {
 
     if (!isset($page) || (isset($page) && $page == 0)) $page = 1;
 
-    $g5['title'] = $g5['board_title'].' '.$page.' 페이지';
+    $g5['title'] = $g5['board_title'.($lang_type=="ko"?"":"_".$lang_type)].' '.$page.' '.$lang['cmd67'];
 }
 
 include_once(G5_PATH.'/head.sub.php');

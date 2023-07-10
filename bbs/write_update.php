@@ -37,6 +37,24 @@ if ($wr_subject == '') {
     $msg[] = '<strong>제목</strong>을 입력하세요.';
 }
 
+$wr_subject_en = '';
+if (isset($_POST['wr_subject_en'])) {
+    $wr_subject_en = substr(trim($_POST['wr_subject_en']),0,255);
+    $wr_subject_en = preg_replace("#[\\\]+$#", "", $wr_subject_en);
+}
+
+$wr_subject_cn = '';
+if (isset($_POST['wr_subject_cn'])) {
+    $wr_subject_cn = substr(trim($_POST['wr_subject_cn']),0,255);
+    $wr_subject_cn = preg_replace("#[\\\]+$#", "", $wr_subject_cn);
+}
+
+$wr_subject_jp = '';
+if (isset($_POST['wr_subject_jp'])) {
+    $wr_subject_jp = substr(trim($_POST['wr_subject_jp']),0,255);
+    $wr_subject_jp = preg_replace("#[\\\]+$#", "", $wr_subject_jp);
+}
+
 $wr_content = '';
 if (isset($_POST['wr_content'])) {
     $wr_content = substr(trim($_POST['wr_content']),0,65536);
@@ -44,6 +62,24 @@ if (isset($_POST['wr_content'])) {
 }
 if ($wr_content == '') {
     $msg[] = '<strong>내용</strong>을 입력하세요.';
+}
+
+$wr_content_en = '';
+if (isset($_POST['wr_content_en'])) {
+    $wr_content_en = substr(trim($_POST['wr_content_en']),0,65536);
+    $wr_content_en = preg_replace("#[\\\]+$#", "", $wr_content_en);
+}
+
+$wr_content_cn = '';
+if (isset($_POST['wr_content_cn'])) {
+    $wr_content_cn = substr(trim($_POST['wr_content_cn']),0,65536);
+    $wr_content_cn = preg_replace("#[\\\]+$#", "", $wr_content_cn);
+}
+
+$wr_content_jp = '';
+if (isset($_POST['wr_content_jp'])) {
+    $wr_content_jp = substr(trim($_POST['wr_content_jp']),0,65536);
+    $wr_content_jp = preg_replace("#[\\\]+$#", "", $wr_content_jp);
 }
 
 // 유튜브 관련 필드
@@ -324,7 +360,13 @@ if ($w == '' || $w == 'r') {
                      ca_name = '$ca_name',
                      wr_option = '$html,$secret,$mail',
                      wr_subject = '$wr_subject',
-                     wr_content = '$wr_content',";
+                     wr_subject_en = '$wr_subject_en',
+                     wr_subject_cn = '$wr_subject_cn',
+                     wr_subject_jp = '$wr_subject_jp',
+                     wr_content = '$wr_content',
+                     wr_content_en = '$wr_content_en',
+                     wr_content_cn = '$wr_content_cn',
+                     wr_content_jp = '$wr_content_jp',";
 
     if(preg_match('/^b_[0-9]{1,2}/', $_POST['bo_table'])){
 
@@ -494,8 +536,14 @@ if ($w == '' || $w == 'r') {
     $sql = " update {$write_table}
                 set ca_name = '{$ca_name}',
                      wr_option = '{$html},{$secret},{$mail}',
-                     wr_subject = '{$wr_subject}',
-                     wr_content = '{$wr_content}',";
+                     wr_subject = '$wr_subject',
+                     wr_subject_en = '$wr_subject_en',
+                     wr_subject_cn = '$wr_subject_cn',
+                     wr_subject_jp = '$wr_subject_jp',
+                     wr_content = '$wr_content',
+                     wr_content_en = '$wr_content_en',
+                     wr_content_cn = '$wr_content_cn',
+                     wr_content_jp = '$wr_content_jp',";
 
     // if(preg_match('/[0-9]{2}$/', $_POST['bo_table'])){
     //     $sql .= "wr_link_yt = '$wr_link_yt', ";

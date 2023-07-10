@@ -359,8 +359,23 @@ $subject = "";
 if (isset($write['wr_subject'])) {
     $subject = str_replace("\"", "&#034;", get_text(cut_str($write['wr_subject'], 255), 0));
 }
+$subject_en = "";
+if (isset($write['wr_subject_en'])) {
+    $subject_en = str_replace("\"", "&#034;", get_text(cut_str($write['wr_subject_en'], 255), 0));
+}
+$subject_cn = "";
+if (isset($write['wr_subject_cn'])) {
+    $subject_cn = str_replace("\"", "&#034;", get_text(cut_str($write['wr_subject_cn'], 255), 0));
+}
+$subject_jp = "";
+if (isset($write['wr_subject_jp'])) {
+    $subject_jp = str_replace("\"", "&#034;", get_text(cut_str($write['wr_subject_jp'], 255), 0));
+}
 
 $content = '';
+$content_en = '';
+$content_cn = '';
+$content_jp = '';
 if ($w == '') {
     $content = html_purifier($board['bo_insert_content']);
 } else if ($w == 'r') {
@@ -370,10 +385,27 @@ if ($w == '') {
                  ."\n &gt; ".str_replace("\n", "\n> ", get_text($write['wr_content'], 0))
                  ."\n &gt; "
                  ."\n &gt; ";
-
+        $content_en = "\n\n\n &gt; "
+                 ."\n &gt; "
+                 ."\n &gt; ".str_replace("\n", "\n> ", get_text($write['wr_content_en'], 0))
+                 ."\n &gt; "
+                 ."\n &gt; ";
+        $content_cn = "\n\n\n &gt; "
+                 ."\n &gt; "
+                 ."\n &gt; ".str_replace("\n", "\n> ", get_text($write['wr_content_cn'], 0))
+                 ."\n &gt; "
+                 ."\n &gt; ";
+        $content_jp = "\n\n\n &gt; "
+                 ."\n &gt; "
+                 ."\n &gt; ".str_replace("\n", "\n> ", get_text($write['wr_content_jp'], 0))
+                 ."\n &gt; "
+                 ."\n &gt; ";
     }
 } else {
     $content = get_text($write['wr_content'], 0);
+    $content_en = get_text($write['wr_content_en'], 0);
+    $content_cn = get_text($write['wr_content_cn'], 0);
+    $content_jp = get_text($write['wr_content_jp'], 0);
 }
 
 $upload_max_filesize = number_format($board['bo_upload_size']) . ' 바이트';
@@ -406,6 +438,9 @@ if ($config['cf_editor'] && $is_dhtml_editor_use && $board['bo_use_dhtml_editor'
     if ( $w == 'u' && (! $is_member || ! $is_admin || $write['mb_id'] !== $member['mb_id']) ){
         // kisa 취약점 제보 xss 필터 적용
         $content = get_text(html_purifier($write['wr_content']), 0);
+        $content_en = get_text(html_purifier($write['wr_content_en']), 0);
+        $content_cn = get_text(html_purifier($write['wr_content_cn']), 0);
+        $content_jp = get_text(html_purifier($write['wr_content_jp']), 0);
     }
 
     if(is_file(G5_EDITOR_PATH.'/'.$config['cf_editor'].'/autosave.editor.js'))
@@ -415,6 +450,22 @@ $editor_html = editor_html('wr_content', $content, $is_dhtml_editor);
 $editor_js = '';
 $editor_js .= get_editor_js('wr_content', $is_dhtml_editor);
 $editor_js .= chk_editor_js('wr_content', $is_dhtml_editor);
+
+$editor_html_en = editor_html('wr_content_en', $content_en, $is_dhtml_editor);
+$editor_js_en = '';
+$editor_js_en .= get_editor_js('wr_content_en', $is_dhtml_editor);
+//$editor_js_en .= chk_editor_js('wr_content_en', $is_dhtml_editor);
+
+$editor_html_cn = editor_html('wr_content_cn', $content_cn, $is_dhtml_editor);
+$editor_js_cn = '';
+$editor_js_cn .= get_editor_js('wr_content_cn', $is_dhtml_editor);
+//$editor_js_cn .= chk_editor_js('wr_content_cn', $is_dhtml_editor);
+
+$editor_html_jp = editor_html('wr_content_jp', $content_jp, $is_dhtml_editor);
+$editor_js_jp = '';
+$editor_js_jp .= get_editor_js('wr_content_jp', $is_dhtml_editor);
+//$editor_js_jp .= chk_editor_js('wr_content_jp', $is_dhtml_editor);
+
 
 // 임시 저장된 글 수
 $autosave_count = autosave_count($member['mb_id']);

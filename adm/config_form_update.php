@@ -38,6 +38,9 @@ foreach( $check_keys as $key ){
 
 $sql = " update {$g5['config_table']}
             set cf_title = '{$_POST['cf_title']}',
+                cf_title_en = '{$_POST['cf_title_en']}',
+                cf_title_cn = '{$_POST['cf_title_cn']}',
+                cf_title_jp = '{$_POST['cf_title_jp']}',
                 cf_admin = '{$_POST['cf_admin']}',
                 cf_admin_email = '{$_POST['cf_admin_email']}',
                 cf_admin_email_name = '{$_POST['cf_admin_email_name']}',

@@ -12,25 +12,25 @@ echo latest('theme/banner', 'banner', 10, 33);
 ?>
 
 <div class="idx_rs">
-   <h2><i class="fa fa-calendar"></i> 이메일</h2>
+   <h2><i class="fas fa-envelope"></i> <?=$lang['words17'];/*이메일 주소*/?></h2>
    <p class="tel">info@taejintech.co.kr</p>
 </div>
 <!--  최신글 -->
 <div class="idx_lt">
     <div class="bg"><span></span><span></span><span></span></div>
     <div class="lt_wr">
-        <h2>상담</h2>
-        <strong class="tel">02-3397-3825~6</strong>
-        <p>FAX : 02)3397-3824</p>
-        <a href="/bbs/board.php?bo_table=qa" class="btn_m btn_b02">온라인상담</a>
+        <h2><?=strtoupper($lang['cmd69']);/*상담*/?></h2>
+        <strong class="tel"><?=$lang_type=="ko"?"0":"+82";?> 2-3397-3825~6</strong>
+        <p>FAX : <?=$lang_type=="ko"?"0":"+82";?> 2-3397-3824</p>
+        <a href="mailto:info@taejintech.co.kr" class="btn_m btn_b02"><?=strtoupper($lang['cmd70']);/*온라인 상담*/?></a>
     </div>
 
     <div class="lt_wr time">
-        <h2>업무시간안내</h2>
+        <h2><?=strtoupper($lang['cmd71']);/*업무시간안내*/;?></h2>
         <ul>
-            <li><strong><i class="fa fa-clock-o"></i> 평일</strong> 08:00 ~ 17:00</li>
-            <li><strong><i class="fa fa-clock-o"></i> 점심시간</strong> 11:50 ~ 12:50</li>
-            <li><strong><i class="fa fa-clock-o"></i> 토,일,공휴일</strong> 휴무</li>
+            <li><strong><i class="fa fa-clock-o"></i> <?=$lang['cmd72'];/*평일*/;?></strong> 08:00 ~ 17:00</li>
+            <li><strong><i class="fa fa-clock-o"></i> <?=$lang['cmd73'];/*점심시간*/;?></strong> 11:50 ~ 12:50</li>
+            <li><strong><i class="fa fa-clock-o"></i> <?=$lang['cmd74'];/*토,일,공휴일*/;?></strong> <?=$lang['cmd75'];/*휴무*/;?></li>
         </ul>
     </div>
 

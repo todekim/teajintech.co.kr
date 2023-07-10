@@ -14,11 +14,9 @@ if (G5_IS_MOBILE) {
 
 } 
 ?>
-
 <!-- <div id="nav">
     <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']); ?></span></div>
 </div> -->
-
 <section id="bo_w">
     <form name="fwrite" id="fwrite" action="<?php echo $action_url ?>" onsubmit="return fwrite_submit(this);" method="post" enctype="multipart/form-data" autocomplete="off">
     <input type="hidden" name="w" value="<?php echo $w ?>">
@@ -38,7 +36,7 @@ if (G5_IS_MOBILE) {
         $option = '';
         if ($is_notice) {
             $option .= PHP_EOL.'<input type="checkbox" id="notice" name="notice" value="1" '.$notice_checked.'>'.PHP_EOL.'<label for="notice">공지</label>';
-            $option .= PHP_EOL.'<input type="checkbox" id="wr_1" name="wr_1" value="1" '.($write[wr_1]?'checked':'').'>'.PHP_EOL.'<label for="notice">단종제품</label>';
+            $option .= PHP_EOL.'<input type="checkbox" id="wr_1" name="wr_1" value="1" '.($write['wr_1']?'checked':'').'>'.PHP_EOL.'<label for="notice">단종제품</label>';
         }
 
         if ($is_html) {
@@ -66,7 +64,6 @@ if (G5_IS_MOBILE) {
     ?>
     <div class="form_01 write_div">
         <h2 class="sound_only"><?php echo $g5['title'] ?></h2>
-
         <?php if ($is_category) { ?>
         <div class="bo_w_select write_div">
             <label for="ca_name" class="sound_only">분류<strong>필수</strong></label>
@@ -117,6 +114,19 @@ if (G5_IS_MOBILE) {
             <input type="text" name="wr_subject" value="<?php echo $subject ?>" id="wr_subject" required class="frm_input full_input required" placeholder="제목">
         </div>
 
+        <div class="bo_w_tit write_div">
+            <label for="wr_subject_en" class="sound_only">영문 제목</label>
+            <input type="text" name="wr_subject_en" value="<?php echo $subject_en ?>" id="wr_subject_en" class="frm_input full_input " placeholder="English Subject">
+        </div>
+        <div class="bo_w_tit write_div">
+            <label for="wr_subject_cn" class="sound_only">중문 제목</label>
+            <input type="text" name="wr_subject_cn" value="<?php echo $subject_cn ?>" id="wr_subject_cn" class="frm_input full_input " placeholder="Chinese Subject">
+        </div>
+        <div class="bo_w_tit write_div">
+            <label for="wr_subject_jp" class="sound_only">일문 제목</label>
+            <input type="text" name="wr_subject_jp" value="<?php echo $subject_jp ?>" id="wr_subject_jp" class="frm_input full_input " placeholder="Japanese Subject">
+        </div>
+
         <div class="write_div">
             <label for="wr_content" class="sound_only">내용<strong>필수</strong></label>
             <?php if($write_min || $write_max) { ?>
@@ -129,6 +139,20 @@ if (G5_IS_MOBILE) {
             <div id="char_count_wrap"><span id="char_count"></span>글자</div>
             <?php } ?>
         </div>
+
+        <div class="write_div">
+            <label for="wr_content_en" style="float:left;">영문 내용</label>
+            <?php echo $editor_html_en; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
+        </div>        
+        <div class="write_div">
+            <label for="wr_content_cn" style="float:left;">중문 내용</label>
+            <?php echo $editor_html_cn; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
+        </div>        
+        <div class="write_div">
+            <label for="wr_content_jp" style="float:left;">일문 내용</label>
+            <?php echo $editor_html_jp; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
+        </div>        
+
 
         <?php
         if(preg_match('/^b_[0-9]{1,2}/', $bo_table)){
@@ -223,6 +247,9 @@ function html_auto_br(obj)
 function fwrite_submit(f)
 {
     <?php echo $editor_js; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
+    <?php echo $editor_js_en; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
+    <?php echo $editor_js_cn; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
+    <?php echo $editor_js_jp; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
 
     var subject = "";
     var content = "";
