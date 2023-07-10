@@ -110,9 +110,6 @@ div.link_yt a.demo:hover{
         echo "</div>\n";
     }
     ?>
-
-
-
     <div id="bo_v_con">
         <div class="team_name">
             <?php if ($view['wr_1']) { ?> 
@@ -149,6 +146,10 @@ div.link_yt a.demo:hover{
         ?>
         </div>
     </div>
+    <div class="bo_v_img" style="text-align:center;">
+        <? echo get_view_thumbnail($view['file'][1]['view']);?>
+    </div>    
+    
 </section>
 
 <?php

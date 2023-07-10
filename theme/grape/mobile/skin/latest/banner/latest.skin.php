@@ -29,12 +29,12 @@ $thumb_height = 200;
             <div class="bn_txt">
                 <div class="txt_wr">
                         <?php
-                        echo "<a href=\"".($list[$i]['wr_link1']?$list[$i]['wr_link1']:$list[$i]['href'])."\"  class=\"bn_tit\" style='color:".$list[$i][wr_2]."'>";
-                            echo $list[$i]['subject'];
+                        echo "<a href=\"".($list[$i]['wr_link1']?$list[$i]['wr_link1']:$list[$i]['href'])."\"  class=\"bn_tit\" style='color:".$list[$i]['wr_2']."'>";
+                            echo $list[$i]['subject'.($lang_type=="ko"?"":"_".$lang_type)];
                         echo "</a>";
                         ?>
 
-                        <div class="bn_detail"> <?php echo $list[$i]['wr_content']; ?></div>
+                        <div class="bn_detail"> <?php echo $list[$i]['wr_content'.($lang_type=="ko"?"":"_".$lang_type)]; ?></div>
 
                         <?php
                         if($list[$i]['wr_link1']) echo "<a href=\"".$list[$i]['wr_link1']."\" class=\"bn_view\">자세히보기<span class=\"arrow\"></span></a>";

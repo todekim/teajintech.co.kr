@@ -18,8 +18,8 @@ if (G5_IS_MOBILE) {
 } 
 ?>
   
-<div id="nav">
-    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']); ?></span></div>
+  <div id="nav">
+    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] ? $board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]); ?></span></div>
 </div>
 
 <article id="bo_v">
@@ -30,7 +30,7 @@ if (G5_IS_MOBILE) {
             <?php } ?>
             <span class="bo_v_tit">
             <?php
-            echo cut_str(get_text($view['wr_subject']), 70); // 글제목 출력
+            echo cut_str(get_text($view['wr_subject'.($lang_type=="ko"?"":"_".$lang_type)]), 70); // 글제목 출력
             ?></span>
         </h2>
 

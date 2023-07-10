@@ -19,7 +19,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 <?php } ?>
 <!-- 게시판 목록 시작 -->
 <div id="bo_list">
-
     <?php if ($is_category) { ?>
     <nav id="bo_cate">
         <h2><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']) ?> 카테고리</h2>

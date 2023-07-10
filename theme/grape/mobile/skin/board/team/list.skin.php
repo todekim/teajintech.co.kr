@@ -23,13 +23,13 @@ if (G5_IS_MOBILE) {
     <?php echo $page ?> 페이지
 </div>
 
-<!-- <div id="nav">
-    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']); ?></span></div>
-</div> -->
+<div id="nav">
+    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] ? $board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]); ?></span></div>
+</div>
 
 <?php if ($is_category) { ?>
 <nav id="bo_cate">
-    <h2><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']) ?> 카테고리</h2>
+    <h2><?php echo ($board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] ? $board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]) ?> 카테고리</h2>
     <ul id="bo_cate_ul">
         <?php echo $category_option ?>
     </ul>
@@ -87,7 +87,7 @@ if (G5_IS_MOBILE) {
 
                 <?php if ($is_checkbox) { // 게시글별 체크박스 ?>
                 <span class="sel bo_chk li_chk">
-                    <label for="chk_wr_id_<?php echo $i ?>"><span class="chk_img"></span> <span class="sound_only"><?php echo $list[$i]['subject'] ?></span></label>
+                    <label for="chk_wr_id_<?php echo $i ?>"><span class="chk_img"></span> <span class="sound_only"><?php echo $list[$i]['subject'.($lang_type=="ko"?"":"_".$lang_type)] ?></span></label>
                     <input type="checkbox" name="chk_wr_id[]" value="<?php echo $list[$i]['wr_id'] ?>" id="chk_wr_id_<?php echo $i ?>">
                 </span>
                 순서 : <input type="text" name="wr_10[]" class="frm_input wr_10" value="<?=$list[$i][wr_10];?>" rel="<?=$list[$i]['wr_id'];?>" size="4"/>
@@ -101,7 +101,7 @@ if (G5_IS_MOBILE) {
                 <a href="<?php echo $list[$i]['href'] ?>" class="gall_li_tit">
                     <?php if (isset($list[$i]['icon_secret'])) echo $list[$i]['icon_secret']; ?>
 
-                    <?php echo $list[$i]['subject'] ?>
+                    <?php echo $list[$i]['subject'.($lang_type=="ko"?"":"_".$lang_type)] ?>
                     <?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?>
                 </a>
                 <div class="lt_detail"> <?php echo get_text(cut_str(strip_tags($list[$i]['wr_content']), 25), 1); ?></div>

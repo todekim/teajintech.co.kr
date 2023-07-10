@@ -16,7 +16,7 @@ if (G5_IS_MOBILE) {
 ?>
 
 <div id="nav">
-    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']); ?></span></div>
+    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] ? $board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]); ?></span></div>
 </div>
 
 <section id="bo_w">
@@ -116,6 +116,18 @@ if (G5_IS_MOBILE) {
             <input type="text" name="wr_subject" value="<?php echo $subject ?>" id="wr_subject" required class="frm_input full_input required" placeholder="제목">
         </div>
         <div class="bo_w_tit write_div">
+            <label for="wr_subject_en" class="sound_only">영문 제목</label>
+            <input type="text" name="wr_subject_en" value="<?php echo $subject_en ?>" id="wr_subject_en" class="frm_input full_input " placeholder="English Subject">
+        </div>
+        <div class="bo_w_tit write_div">
+            <label for="wr_subject_cn" class="sound_only">중문 제목</label>
+            <input type="text" name="wr_subject_cn" value="<?php echo $subject_cn ?>" id="wr_subject_cn" class="frm_input full_input " placeholder="Chinese Subject">
+        </div>
+        <div class="bo_w_tit write_div">
+            <label for="wr_subject_jp" class="sound_only">일문 제목</label>
+            <input type="text" name="wr_subject_jp" value="<?php echo $subject_jp ?>" id="wr_subject_jp" class="frm_input full_input " placeholder="Japanese Subject">
+        </div>
+        <div class="bo_w_tit write_div">
             <label for="wr_1" class="sound_only">배경색</label>
             <input type="text" name="wr_1" value="<?php echo $write[wr_1]; ?>" id="wr_1" class="frm_input full_input" placeholder="배경색">
         </div>
@@ -136,8 +148,18 @@ if (G5_IS_MOBILE) {
             <div id="char_count_wrap"><span id="char_count"></span>글자</div>
             <?php } ?>
         </div>
-
-
+        <div class="write_div">
+            <label for="wr_content_en" style="float:left;">영문 내용</label>
+            <?php echo $editor_html_en; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
+        </div>        
+        <div class="write_div">
+            <label for="wr_content_cn" style="float:left;">중문 내용</label>
+            <?php echo $editor_html_cn; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
+        </div>        
+        <div class="write_div">
+            <label for="wr_content_jp" style="float:left;">일문 내용</label>
+            <?php echo $editor_html_jp; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
+        </div> 
         <?php for ($i=1; $is_link && $i<=2; $i++) { ?>
         <div class="bo_w_link write_div">
             <label for="wr_link<?php echo $i ?>"><i class="fa fa-link" aria-hidden="true"></i> <span class="sound_only">링크 #<?php echo $i ?></span></label>
@@ -212,6 +234,9 @@ function html_auto_br(obj)
 function fwrite_submit(f)
 {
     <?php echo $editor_js; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
+    <?php echo $editor_js_en; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
+    <?php echo $editor_js_cn; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
+    <?php echo $editor_js_jp; // 에디터 사용시 자바스크립트에서 내용을 폼필드로 넣어주며 내용이 입력되었는지 검사함   ?>
 
     var subject = "";
     var content = "";

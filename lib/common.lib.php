@@ -337,7 +337,7 @@ function get_dirsize($dir)
 function get_list($write_row, $board, $skin_url, $subject_len=40)
 {
     global $g5, $config;
-    global $qstr, $page;
+    global $qstr, $page,$lang_type;
 
     //$t = get_microtime();
 
@@ -348,10 +348,17 @@ function get_list($write_row, $board, $skin_url, $subject_len=40)
     $board_notice = array_map('trim', explode(',', $board['bo_notice']));
     $list['is_notice'] = in_array($list['wr_id'], $board_notice);
 
-    if ($subject_len)
+    if ($subject_len){
         $list['subject'] = conv_subject($list['wr_subject'], $subject_len, '…');
-    else
+        $list['subject_en'] = conv_subject($list['wr_subject_cn'], $subject_len, '…');
+        $list['subject_cn'] = conv_subject($list['wr_subject_en'], $subject_len, '…');
+        $list['subject_jp'] = conv_subject($list['wr_subject_jp'], $subject_len, '…');
+    }else{
         $list['subject'] = conv_subject($list['wr_subject'], $board['bo_subject_len'], '…');
+        $list['subject_en'] = conv_subject($list['wr_subject_en'], $board['bo_subject_len'], '…');
+        $list['subject_cn'] = conv_subject($list['wr_subject_cn'], $board['bo_subject_len'], '…');
+        $list['subject_jp'] = conv_subject($list['wr_subject_jp'], $board['bo_subject_len'], '…');
+    }        
 
     // 목록에서 내용 미리보기 사용한 게시판만 내용을 변환함 (속도 향상) : kkal3(커피)님께서 알려주셨습니다.
     if ($board['bo_use_list_content'])
@@ -363,6 +370,9 @@ function get_list($write_row, $board, $skin_url, $subject_len=40)
 			$html = 2;
 
         $list['content'] = conv_content($list['wr_content'], $html);
+        $list['content_en'] = conv_content($list['wr_content_en'], $html);
+        $list['content_cn'] = conv_content($list['wr_content_cn'], $html);
+        $list['content_jp'] = conv_content($list['wr_content_jp'], $html);
 	}
 
     $list['comment_cnt'] = '';

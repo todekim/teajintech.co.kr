@@ -14,15 +14,15 @@ if (G5_IS_MOBILE) {
 
 } 
 ?>
-<!-- <div id="nav">
-    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']); ?></span></div>
-</div> -->
+<div id="nav">
+    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] ? $board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]); ?></span></div>
+</div>
 <section id="bo_w">
     <form name="fwrite" id="fwrite" action="<?php echo $action_url ?>" onsubmit="return fwrite_submit(this);" method="post" enctype="multipart/form-data" autocomplete="off">
     <input type="hidden" name="w" value="<?php echo $w ?>">
     <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
     <input type="hidden" name="wr_id" value="<?php echo $wr_id ?>">
-    <input type="hidden" name="sca" value="<?php echo $sca ?>">
+    <input type="hidden" name="sca" value="<?php echo $sca ?>">``
     <input type="hidden" name="sfl" value="<?php echo $sfl ?>">
     <input type="hidden" name="stx" value="<?php echo $stx ?>">
     <input type="hidden" name="spt" value="<?php echo $spt ?>">

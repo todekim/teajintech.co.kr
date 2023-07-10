@@ -26,11 +26,11 @@ if (G5_IS_MOBILE) {
 </div>
 
 <div id="nav">
-    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']); ?></span></div>
+    <div class="nav_wr"><a href="<?php echo G5_URL ?>"><i class="fa fa-home"></i> </a><span><?php echo ($board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] ? $board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]); ?></span></div>
 </div>
 <?php if ($is_category) { ?>
-<nav id="bo_cate">
-    <h2><?php echo ($board['bo_mobile_subject'] ? $board['bo_mobile_subject'] : $board['bo_subject']) ?> 카테고리</h2>
+    <nav id="bo_cate">
+    <h2><?php echo ($board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] ? $board['bo_mobile_subject'.($lang_type=="ko"?"":"_".$lang_type)] : $board['bo_subject'.($lang_type=="ko"?"":"_".$lang_type)]) ?> 카테고리</h2>
     <ul id="bo_cate_ul">
         <?php echo $category_option ?>
     </ul>
@@ -94,7 +94,7 @@ if (G5_IS_MOBILE) {
 
                     <?php if ($is_checkbox) { // 게시글별 체크박스 ?>
                     <span class="sel bo_chk li_chk">
-                        <label for="chk_wr_id_<?php echo $i ?>"><span class="chk_img"></span> <span class="sound_only"><?php echo $list[$i]['subject'] ?></span></label>
+                        <label for="chk_wr_id_<?php echo $i ?>"><span class="chk_img"></span> <span class="sound_only"><?php echo $list[$i]['subject'.($lang_type=="ko"?"":"_".$lang_type)] ?></span></label>
                         <input type="checkbox" name="chk_wr_id[]" value="<?php echo $list[$i]['wr_id'] ?>" id="chk_wr_id_<?php echo $i ?>">
                     </span>
                     <?php } ?>
@@ -103,7 +103,7 @@ if (G5_IS_MOBILE) {
                         <?php echo $list[$i]['icon_reply']; ?>
                         <?php if ($list[$i]['is_notice']) { ?><strong class="notice_icon">[공지]</strong><?php } ?> 
                         <?php if (isset($list[$i]['icon_secret'])) echo $list[$i]['icon_secret'] ?>
-                        <?php echo $list[$i]['subject'] ?>
+                        <?php echo $list[$i]['subject'.($lang_type=="ko"?"":"_".$lang_type)] ?>
                         <?php
                         // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }
 

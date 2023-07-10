@@ -5,7 +5,7 @@ if (!defined('_GNUBOARD_')) exit;
 // $cache_time 캐시 갱신시간
 function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=1, $options='')
 {
-    global $g5;
+    global $g5,$lang_type;
 
     if (!$skin_dir) $skin_dir = 'basic';
 
@@ -53,6 +53,9 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
 
                     $list = (is_array($caches) && isset($caches['list'])) ? $caches['list'] : array();
                     $bo_subject = (is_array($caches) && isset($caches['bo_subject'])) ? $caches['bo_subject'] : '';
+                    $bo_subject_en = (is_array($caches) && isset($caches['bo_subject_en'])) ? $caches['bo_subject_en'] : '';
+                    $bo_subject_cn = (is_array($caches) && isset($caches['bo_subject_cn'])) ? $caches['bo_subject_cn'] : '';
+                    $bo_subject_jp = (is_array($caches) && isset($caches['bo_subject_jp'])) ? $caches['bo_subject_jp'] : '';
                 } catch(Exception $e){
                     $cache_fwrite = true;
                     $list = array();
@@ -67,6 +70,9 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
         $sql = " select * from {$g5['board_table']} where bo_table = '{$bo_table}' ";
         $board = sql_fetch($sql);
         $bo_subject = get_text($board['bo_subject']);
+        $bo_subject_en = get_text($board['bo_subject_en']);
+        $bo_subject_cn = get_text($board['bo_subject_cn']);
+        $bo_subject_jp = get_text($board['bo_subject_jp']);
 
         $tmp_write_table = $g5['write_prefix'] . $bo_table; // 게시판 테이블 전체이름
         $sql = " select * from {$tmp_write_table} where wr_is_comment = 0 order by wr_num limit 0, {$rows} ";
@@ -78,7 +84,7 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
             }
             $row['wr_email'] = '';              //이메일 저장 안함
             if (strstr($row['wr_option'], 'secret')){           // 비밀글일 경우 내용, 링크, 파일 저장 안함
-                $row['wr_content'] = $row['wr_link1'] = $row['wr_link2'] = '';
+                $row['wr_content'] = $row['wr_content_en'] = $row['wr_content_cn'] = $row['wr_content_jp'] = $row['wr_link1'] = $row['wr_link2'] = '';
                 $row['file'] = array('count'=>0);
             }
             $list[$i] = get_list($row, $board, $latest_skin_url, $subject_len);
@@ -89,6 +95,9 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
             $caches = array(
                 'list' => $list,
                 'bo_subject' => sql_escape_string($bo_subject),
+                'bo_subject_en' => sql_escape_string($bo_subject_en),
+                'bo_subject_cn' => sql_escape_string($bo_subject_cn),
+                'bo_subject_jp' => sql_escape_string($bo_subject_jp),
                 );
             $cache_content = "<?php if (!defined('_GNUBOARD_')) exit; ?>\n\n";
             $cache_content .= base64_encode(serialize($caches));  //serialize
@@ -98,6 +107,13 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
 
             @chmod($cache_file, 0640);
         }
+    }
+    
+    switch($lang_type){
+        case ('en'):$bo_subject=$bo_subject_en;break;
+        case ('cn'):$bo_subject=$bo_subject_cn;break;
+        case ('jp'):$bo_subject=$bo_subject_jp;break;
+        default: break;
     }
 
     ob_start();

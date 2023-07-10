@@ -24,11 +24,12 @@ foreach ($_GET as $first_key => $first_value) {
             <a href="<?php echo G5_URL ?>"><img src="<?php echo G5_IMG_URL ?>/m_logo<?=($lang_type!="ko")?"_en":"";?>.png" alt="<?php echo $config['cf_title']; ?>"></a>
         </div>
         <div id="hd_btn">
-            <button type="button" class="hd_language_btn"><?=strtoupper($lang_type);?></button>
+            <button type="button" class="hd_language_btn"><?=$lang_arr[$lang_type];?></button>
             <ul id="ul_language">
-                <li class="<?= ($lang_type == "ko") ? "on" : ""; ?>"><a href="<?= $PHP_SELF; ?>?lang_type=ko<?=$GET_VARS;?>">KO</a></li>
-                <li class="<?= ($lang_type == "en") ? "on" : ""; ?>"><a href="<?= $PHP_SELF; ?>?lang_type=en<?=$GET_VARS;?>">EN</a></li>
-                <li class="<?= ($lang_type == "cn") ? "on" : ""; ?>"><a href="<?= $PHP_SELF; ?>?lang_type=cn<?=$GET_VARS;?>">CN</a></li>
+                <li class="<?= ($lang_type == "ko") ? "on" : ""; ?>"><a href="<?= $PHP_SELF; ?>?lang_type=ko<?=$GET_VARS;?>"><?=$lang_arr['ko'];?></a></li>
+                <li class="<?= ($lang_type == "en") ? "on" : ""; ?>"><a href="<?= $PHP_SELF; ?>?lang_type=en<?=$GET_VARS;?>"><?=$lang_arr['en'];?></a></li>
+                <!--<li class="<?= ($lang_type == "cn") ? "on" : ""; ?>"><a href="<?= $PHP_SELF; ?>?lang_type=cn<?=$GET_VARS;?>"><?=$lang_arr['cn'];?></a></li>
+                <li class="<?= ($lang_type == "jp") ? "on" : ""; ?>"><a href="<?= $PHP_SELF; ?>?lang_type=cn<?=$GET_VARS;?>"><?=$lang_arr['jp'];?></a></li>-->
             </ul>
             <button type="button" class="hd_menu_btn"><span class="menu-icon"></span><span class="sound_only">전체메뉴</span></button>
             <button type="button" class="hd_sch_btn"><span class="search-icon"></span><span class="sound_only">검색열기</span></button>

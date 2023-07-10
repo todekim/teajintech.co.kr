@@ -115,7 +115,7 @@ transition: 0.3s all ease-in-out;
 #al_menu .btn_close{position:absolute;top:0;right:0;background:none;border:0;width:100px;height:100px;font-size:20px;outline:0;color:#aaa}
 #al_menu .btn_close:hover{color:#000}
 
-#ul_language{position:absolute;top:20px;border:1px solid #dfdfdf;background:#ffffff;padding:0;margin:0;display:none}
+#ul_language{position:absolute;top:20px;right:80px;border:1px solid #dfdfdf;background:#ffffff;padding:0;margin:0;display:none}
 #ul_language li{list-style:none;border-bottom:1px solid #efefef}
 #ul_language li:last-child{border:none;}
 #ul_language li a{display:block;line-height:2em;text-decoration:none;padding:.6em 1em;}
