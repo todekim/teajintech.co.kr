@@ -69,6 +69,7 @@ if(trim($co['co_skin']) == '')
 $content_skin_path = get_skin_path('content', $co['co_skin']);
 $content_skin_url  = get_skin_url('content', $co['co_skin']);
 $skin_file = $content_skin_path.'/content.skin.php';
+
 if ($is_admin)
     echo '<div class="ctt_admin"><a href="'.G5_ADMIN_URL.'/contentform.php?w=u&amp;co_id='.$co_id.'" class="btn_admin btn">내용 수정</a></div>';
 ?>
@@ -79,7 +80,7 @@ if(is_file($skin_file)) {
         echo '<div id="ctt_himg" class="ctt_img"><img src="'.G5_DATA_URL.'/content/'.$co_id.'_h" alt=""></div>';
 
     include($skin_file);
-
+    
     $timg = G5_DATA_PATH.'/content/'.$co_id.'_t';
     if (file_exists($timg)) // 하단 이미지
         echo '<div id="ctt_timg" class="ctt_img"><img src="'.G5_DATA_URL.'/content/'.$co_id.'_t" alt=""></div>';
